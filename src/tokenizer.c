@@ -1,42 +1,45 @@
 #include <stdio.h>
-#include <tokenizer.h>
+#include <stdlib.h>
+#include "tokenizer.h"
 
 
 int space_char(char c){
   if(c == '\t' || c == ' '){
-    return true
+    return 1;
       }
   else
-    return false
+    return 0;
 }
 
 int non_space_char(char c){
   if(c != '\t' || c != ' '){
-    return true
+    return 1;
       }
   else{
-    return false
+    return 0;
       }
 }
 char *token_start(char *str){
-  while(space_char(c) == true){
+  while(space_char(*str) == 1){
     ++(*str);
   }
-  return *str;
+  return str;
 }
 
 char *token_terminator(char *token){
-  while(non_space_char == true){
+  while(non_space_char(*token) == 1){
     ++(*token);
   }
-  return *token;
+  return token;
 }
 
+
+//Rewrite this function
 int count_tokens(char *str){
   int count = 0;
-  while(token_start(str) != EOF){
+  while(token_start(str) != '\0'){
     count++;
-    str = token_terminator(*token);
+    str = token_terminator(str);
   }
   return count;
 }
