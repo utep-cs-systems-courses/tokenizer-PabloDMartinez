@@ -37,10 +37,13 @@ char *token_terminator(char *token){
 //Rewrite this function
 int count_tokens(char *str){
   int count = 0;
-  while(token_start(str) != '\0'){
-    count++;
-    str = token_terminator(str);
-  }
+  do{
+    if (str = token_start(str))
+      count++;
+    else
+      break;
+  }while(str = token_terminator(str));
+  
   return count;
 }
 
